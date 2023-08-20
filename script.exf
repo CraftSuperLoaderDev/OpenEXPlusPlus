@@ -1,0 +1,20 @@
+include "system";
+include "util";
+include "type";
+
+value out = system.getOutputStream();
+
+function println(info){
+    if(type.typeOf(info) == "STRING"){
+        out.write(util.toCharArray(info));
+        return null;
+    }
+    if(type.typeOf(info) == "INTEGER"|type.typeOf(info) == "DOUBLE"){
+        out.write(info);
+        return null;
+    }
+    if(type.typeOf(info) == "NULL"){
+        out.write("null");
+        return null;
+    }
+}
